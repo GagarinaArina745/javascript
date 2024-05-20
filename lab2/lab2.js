@@ -1,38 +1,77 @@
-function pow(x, n){
-    //return x to the power of n, all
-    //return type - number
-    return x**n}
+/**
+ * counts x to the power of n
+ * @param {number} x
+ * @param {number} n
+ * @returns {number}
+ */
+function pow(x, n){return x**n}
+
+
+/**
+ * counts sum of numbers up to n
+ * @param {number} n 
+ * @returns {number}
+ */
 function sumTo(n){
     let s = 0
-    for (let i=0; i<=n; i++) 
-        //return sum of numbers up to n
-        //return type - number
-        s+=i
+    for (let i=0; i<=n; i++) s+=i
     return s
 }
-function isLeapYear(year){
-    //checks if the year is leap, returns boolean
-    return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)}
+
+
+/**
+ * checks if the year is leap
+ * @param {number} year
+ * @returns {boolean}
+ */
+function isLeapYear(year){return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)}
+
+
+/**
+ * counts n factorial
+ * @param {number} n 
+ * @returns {bigint}
+ */
 function factorial(n){
-    //returns bigint n!
     if (n == 0) return BigInt(1)
     if (n == 1) return BigInt(1)
     if (n >= 2) return BigInt(n) * BigInt(factorial(n - 1));
 }
+
+
+/**
+ * counts nth fib number
+ * @param {number} n 
+ * @returns {bigint}
+ */
 function fib(n){
-    //returns bigint nth fib number
-    if (n == 0) return BigInt(0)
-    if (n == 1) return BigInt(1)
-    if (n >= 2) return BigInt(fib(n-1)) + BigInt(fib(n - 2));
+    if (!n) return BigInt(0)
+    let a = BigInt(1)
+    let b = BigInt(1)
+    for (let i = 3; i <= n; i++) {
+      let c = a + b
+      a = b
+      b = c
+    }
+    return b
 }
-function compare(x){
-    //return a func
-    return function(y){
-        //func with ternary operator
-        // null if x and y are equal, thier comparison if not (boolean)
-        return y==x ? null : y>x}}
+
+/**
+ * checks if y is more than x
+ * if equal returns null
+ * @param {number} x
+ * @param {number} y
+ * @returns
+ */
+function compare(x){return function(y){return y==x ? null : y>x}}
+
+
+/**
+ * conts sum of given numbers
+ * @param  {...number} args 
+ * @returns {number}
+ */
 function sum(...args){
-    //...args - unpack list of numbers and add them up
     let s = 0
     for(let i of args) s+=i
     return s

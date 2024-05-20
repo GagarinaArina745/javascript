@@ -8,45 +8,19 @@
 </head>
 
 <body>
-
     <script>
-        "use strict";
-        let num = +prompt("Введите целое число:");
-        let flag;
-        if(num > 0 && Number.isInteger(num)){
-        if (num % 10 == 1 && num % 100 != 11) {
-            flag = 'а';
-            // alert(`На ветке сидит ${num} ворона`);
+        'use strict'
+        let num = prompt("Enter number of crows")
+        num = parseInt(num)
+        let lastOne = num%10
+        let lastTwo = num%100
+        if (num >= 0){
+            if (lastOne === 0 || lastOne >= 5 || (lastTwo>=11 && lastTwo<=14)) alert(`${num} ворон`)
+            else if (lastOne===1) alert(`${num} ворона`)
+            else alert(`${num} вороны`)
         }
-        else if (/*((num % 10 == 2 || num % 10 == 3 || num % 10 == 4)
-            && (num != 12 && num != 13 && num != 14))
-    || (num == 2 || num == 3 || num == 4)*/(num % 10 >= 2 && num % 10 <= 4) && !(num % 100 > 10 &&  num % 100 < 20)) {
-            flag = 'ы';
-        }
-        else {
-            flag = '';
-        }
-        // alert(`На ветке сидит ${num} ворон${flag}`);
-
-        switch (flag) {
-            case 'а':
-                alert(`На ветке сидит ${num} ворон${flag}`);
-                break;
-            case 'ы':
-                alert(`На ветке сидит ${num} ворон${flag}`);
-                break;
-            case '':
-                alert(`На ветке сидит ${num} ворон${flag}`);
-                break;
-            default:
-                alert("Введите целое число");
-                break;
-        }
-        
-    }
-    else alert("Введите целое число");
+        else alert(`Nah`)
     </script>
-
 </body>
 
 </html>
