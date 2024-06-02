@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Выбор музыкального жанра</title>
 </head>
+
 <body>
 
-    <select id="janrOfMusic" onchange="printCurrentOpt()">
+    <select id="music-genre">
         <option value="Rock">Рок</option>
-        <option value="Blues" selected>Блюз</option>
+        <option value="Blues">Блюз</option>
+        <option value="Classic" selected>Классика</option>
     </select>
 
+    <div id="selected-info">
+        <p>Выбранное значение: <span id="selected-value"></span></p>
+        <p>Выбранный текст: <span id="selected-text"></span></p>
+    </div>
+
     <script>
+        'use strict';
 
-        let option;
+        const selectElement = document.getElementById('music-genre');
+        const selectedValueElement = document.getElementById('selected-value');
+        const selectedTextElement = document.getElementById('selected-text');
 
-        let newOption = new Option('Классика', 'Classic');
-        janrOfMusic.append(newOption);
-        newOption.selected = true;
-        printCurrentOpt();
-
-        function printCurrentOpt(){
-            option = janrOfMusic.options[janrOfMusic.selectedIndex];
-            console.log(`Текст новой выбранной опции: ${option.textContent}\nЗначение: ${option.value}`);
+        function updateSelectedInfo() {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            selectedValueElement.textContent = selectedOption.value;
+            selectedTextElement.textContent = selectedOption.text;
         }
-        
+
+
+        updateSelectedInfo();
+        selectElement.addEventListener('change', updateSelectedInfo);
     </script>
-    
+
 </body>
+
 </html>
