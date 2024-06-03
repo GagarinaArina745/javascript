@@ -4,10 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Плейсхолдер-подсказка</title>
     <style>
-        ::placeholder {
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            transition: all 0.3s;
+            pointer-events: none;
+            font-size: 16px;
+            color: grey;
+        }
+
+
+        input:focus+label,
+        input:not(:placeholder-shown)+label {
+            top: -20px;
+            left: 5px;
+
             color: blue;
         }
     </style>
@@ -18,7 +40,7 @@
     <form id="form">
         <div class="form-group">
             <input id="placeholder" type="text" placeholder=" " data-placeholder="Введите текст">
-            <label for="placeholder">Введите текст</label>
+            <label for="placeholder">Введите текст:</label>
         </div>
     </form>
 
