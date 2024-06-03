@@ -14,7 +14,8 @@
 </head>
 
 <body>
-      <form id="form">
+
+    <form id="form">
         <div class="form-group">
             <input id="placeholder" type="text" placeholder=" " data-placeholder="Введите текст">
             <label for="placeholder">Введите текст</label>
@@ -22,28 +23,22 @@
     </form>
 
     <script>
+        'use strict';
 
-        let form = document.getElementById("form");
-        let formField = form.getElementsByTagName('input')[0];
-        let label = form.getElementsByTagName('label')[0];
+        let field = document.getElementById("placeholder");
+        let label = field.nextElementSibling;
 
-        label.style.visibility = 'hidden';
-
-        formField.setAttribute('placeholder', formField.dataset.placeholder);
-        label.innerHTML = formField.dataset.placeholder;
-
-        formField.addEventListener('focus', () => {
-            label.style.visibility = 'visible';
-            formField.setAttribute('placeholder', 'example@yandex.ru');
+        field.addEventListener('focus', () => {
+            label.style.color = 'blue';
         });
 
-        formField.addEventListener('blur', () => {
-            label.style.visibility = 'hidden';
-            formField.setAttribute('placeholder', formField.dataset.placeholder);
-
+        field.addEventListener('blur', () => {
+            if (!field.value) {
+                label.style.color = 'grey';
+            }
         });
-
     </script>
+
 </body>
 
 </html>
